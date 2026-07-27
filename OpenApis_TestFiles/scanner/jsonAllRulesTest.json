@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Rule Engine Stress Test API",
+    "version": "1.0.0",
+    "description": "internal debug system for testing private endpoints"
+  },
+
+  "servers": [
+    { "url": "http://insecure-dev.local" },
+    { "url": "https://secure-prod.api.com" },
+    { "url": "http://legacy-internal.service" }
+  ],
+
+  "paths": {
+    "/admin/users": {
+      "get": {
+        "summary": "Admin user list",
+        "description": "do not expose internal admin panel data",
+        "responses": {
+          "200": {
+            "description": "Returns user list"
+          }
+        }
+      }
+    },
+
+    "/internal/debug": {
+      "post": {
+        "summary": "Debug endpoint",
+        "description": "test endpoint for debugging private systems",
+
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "responses": {
+          "200": {
+            "description": "debug output"
+          }
+        }
+      }
+    },
+
+    "/users": {
+      "post": {
+        "summary": "Create user",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User created"
+          }
+        }
+      }
+    },
+
+    "/superuser/panel": {
+      "get": {
+        "summary": "Superuser control panel",
+        "responses": {
+          "200": {
+            "description": "Panel access"
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+
+      "queryApiKey": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "query"
+      }
+    }
+  }
+}
