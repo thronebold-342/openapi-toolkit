@@ -243,7 +243,7 @@ def compare_parameters(old_spec, new_spec):
 
         old_methods = {
             method
-            for method in old_spec["paths"][path] #[path] here is keys like "/users" right under the first "path
+            for method in old_spec["paths"][path] 
             if method.lower() in HTTP_METHODS
         }
 
@@ -261,10 +261,7 @@ def compare_parameters(old_spec, new_spec):
         for method in common_methods: 
 
             old_operation = old_spec["paths"][path][method] 
-            new_operation = new_spec["paths"][path][method] #Chatgpt , in here, is method supposed to be keys under keys like "/users" (YES)
-            
-            #so the wholde code above was to get the methods under keys like "/users" withc is under "path" that are HHPT METHODS 
-            #now under we are extracting the parameters of these methods under keys like "/users"
+            new_operation = new_spec["paths"][path][method] 
 
 
             # Get parameters, empty list if none exist
