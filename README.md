@@ -46,7 +46,7 @@ pip3 install -r requirements.txt
 **Diff Engine** — compare two spec versions:
 
 ```bash
-python3 diffEngine.py
+python3 diff_engine.py
 ```
 
 *(currently reads `old_spec.yaml` / `new_spec.yaml` from the working directory — CLI arguments for custom filenames are on the roadmap, see below)*
@@ -65,7 +65,7 @@ Low - OPTIONAL_PARAMETER_ADDED - GET /users added optional parameter 'sort'
 **Security Scanner** — scan a single spec:
 
 ```bash
-python3 OpenApiScanner.py
+python3 openapi_scanner.py
 ```
 
 *(currently reads a hardcoded filename from the working directory — see roadmap below)*
